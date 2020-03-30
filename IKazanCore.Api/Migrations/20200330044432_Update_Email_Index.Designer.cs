@@ -3,14 +3,16 @@ using IKazanCore.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IKazanCore.Api.Migrations
 {
     [DbContext(typeof(KazanCoreContext))]
-    partial class KazanCoreContextModelSnapshot : ModelSnapshot
+    [Migration("20200330044432_Update_Email_Index")]
+    partial class Update_Email_Index
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,9 +41,7 @@ namespace IKazanCore.Api.Migrations
                         .HasAnnotation("SqlServer:Clustered", true);
 
                     b.HasIndex("Email")
-                        .IsUnique()
-                        .HasName("idx_users_email")
-                        .HasFilter("[Email] IS NOT NULL");
+                        .HasName("idx_users_email");
 
                     b.ToTable("users");
                 });

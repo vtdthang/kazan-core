@@ -29,6 +29,12 @@ namespace IKazanCore.Api.Data
             modelBuilder.Entity<User>()
                 .Property(u => u.Id)
                 .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .HasName("idx_users_email")
+                .IsUnique();
+                
         }
     }
 }
